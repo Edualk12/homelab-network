@@ -263,4 +263,96 @@ interface gi28
 
 ## How It Operates 
 
+### Traffic Flow 
+Traffic enters from the ISP modem to the G0/0/0 interface of the Cisco ISR4321 Router and enters the network though the G0/0/1 interface 
 
+### VLAN Routing
+The Cisco ISR4321 uses router-on-a-stick via a 
+single physical interface (GigabitEthernet0/0/1) 
+with dot1Q subinterfaces for each VLAN:
+
+```cisco
+!
+interface GigabitEthernet0/0/1.1
+ encapsulation dot1Q 10
+ ip address 192.168.1.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.2
+ encapsulation dot1Q 20
+ ip address 192.168.2.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.3
+ encapsulation dot1Q 30
+ ip address 192.168.3.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.4
+ encapsulation dot1Q 1 native
+ ip address 192.168.4.1 255.255.255.0
+ ip nat inside
+!
+```
+
+### Switching
+The EnGenius EWS7928P connects to the Cisco router and it acts as the default gateway
+via gi1 as a tagged trunk carrying VLANs 10, 20 
+and 30. Access ports are assigned per VLAN:
+
+- gi3, gi7, gi21 → VLAN 10 (main)
+- gi19 → VLAN 20
+- gi5 → VLAN 30 (guest)
+
+### DHCP
+Each VLAN has its own DHCP pool on the Cisco router.
+Where the interface address of the cisco router is excluded. 
+
+```ip domain name KlaudeRouter
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.2.1
+ip dhcp excluded-address 192.168.3.1
+ip dhcp excluded-address 192.168.4.1
+!
+```
+DHCP pool of each vlan, where only in VLAN10 the primary DNS-server is set to the Pihole PC.
+```
+ip dhcp pool VLAN10
+ network 192.168.1.0 255.255.255.0
+ dns-server 192.168.1.69 8.8.8.8
+ domain-name klaudeVlan10
+ default-router 192.168.1.1
+ lease infinite
+!
+ip dhcp pool VLAN20
+ network 192.168.2.0 255.255.255.0
+ dns-server 8.8.8.8
+ default-router 192.168.2.1
+ domain-name klaudeVlan20
+ lease infinite
+!
+ip dhcp pool VLAN30
+ network 192.168.3.0 255.255.255.0
+ dns-server 8.8.8.8
+ default-router 192.168.3.1
+ domain-name klaudeVlan30
+ lease infinite
+!
+ip dhcp pool DEFAULTVLAN
+ network 192.168.4.0 255.255.255.0
+ dns-server 8.8.8.8
+ default-router 192.168.4.1
+ domain-name klaudeDefaultVlan
+ lease infinite
+!
+```
+
+### DNS
+The HP Thin Client where its connected via VLAN 10 uses Pi-hole on 192.168.1.69 as primary DNS.
+The Cisco ISR4321 also acts as the secondary or backup DNS incase the HP Thin Clients Fails somehow.
+
+### NAT
+All four subnets NAT out through GigabitEthernet0/0/0 
+via PAT overload on the Cisco router.
+
+### Security 
