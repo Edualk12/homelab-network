@@ -356,3 +356,4 @@ All four subnets NAT out through GigabitEthernet0/0/0
 via PAT overload on the Cisco router.
 
 ### Security 
+Using the Cisco ISR4321 onboard router for the firewall and the Pihole Ad Blocker and DNS server used for filtering.
