@@ -33,7 +33,7 @@ My Homelab network is built in order for me to learn and gain hands on experienc
 ## Configuration
 
 ### Cisco ISR4321
-For the router I used the router on a stick method for Inter VLAN routing and added extra security through adding a password when accessing privelaged exec mode.
+For the router I used the router on a stick method for Inter VLAN routing and added extra security through adding a password when accessing priveleged exec mode.
 ```!
 ! KlaudeRouter - Cisco ISR4321
 ! Last modified: Jun 2 2026
