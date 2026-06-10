@@ -392,23 +392,18 @@ I installed tailscale to my main server and main PC using the HP Thin Client ser
 
 PC on VLAN 10 successfully pinged:
 - VLAN 10 Gateway 192.168.1.1
-![ping10 Diagram]()
+![ping10 Diagram](https://github.com/Edualk12/homelab-network/blob/main/ping%20vlan%2010.png)
 
 
 - VLAN 20 Gateway 192.168.2.1
-![ping20 Diagram]()
+![ping20 Diagram](https://github.com/Edualk12/homelab-network/blob/main/ping%20vlan%2020.png)
   
 - VLAN 30 Gateway 192.168.3.1
-![ping30 Diagram]()
+![ping30 Diagram](https://github.com/Edualk12/homelab-network/blob/main/ping%20vlan%2030.png)
 
 ### DNS
 
 Pi-hole successfully resolves DNS requests from VLAN 10.
-
-### Internet Access
-
-All VLANs have internet connectivity through ISR4321.
-
 
 ## What I Learned
 - Router-on-a-stick with dot1Q subinterfaces for VLAN
