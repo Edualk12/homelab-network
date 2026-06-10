@@ -359,7 +359,12 @@ via PAT overload on the Cisco router.
 Using the Cisco ISR4321 onboard router for the firewall and the Pihole Ad Blocker and DNS server used for filtering.
 
 ## REMOTE ACCESS via Tailscale VPN
+
 Due to CGnat which my IP is dynamic I am not able to securely and remotely connect to my network using traditional methods such as Wireguard.
+
+
+![VPN Diagram](https://github.com/Edualk12/homelab-network/blob/main/VPN.png)
+
 A quick and simple alternative I found is through using tailscale to access my network through their relay servers to bypass the dynamic IP address.
 
 I installed tailscale to my main server and main PC using the HP Thin Client server as the main server to wake up the other computers using Wake-on-Lan through SSH
