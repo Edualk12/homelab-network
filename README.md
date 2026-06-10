@@ -391,6 +391,20 @@ I installed tailscale to my main server and main PC using the HP Thin Client ser
 
 ## Pi-hole DNS Server | Ad Blocker
 
+### Overview
+Pi-hole runs on the HP Thin Client (T530) on VLAN 10 at a 
+static IP of `192.168.1.69`, serving as the primary DNS 
+server for the main network.
+
+### Why Only VLAN 10?
+Pi-hole is intentionally scoped to VLAN 10 only. VLAN 20 
+and VLAN 30 (guest/wifi) use Google DNS (8.8.8.8) directly 
+to avoid blocking legit traffic for other users and 
+to keep the guest network isolated from internal DNS.
+
+### DHCP DNS Assignment
+The Cisco ISR4321 assigns Pi-hole as primary DNS for VLAN 10:
+
 
 ## Validation
 
