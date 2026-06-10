@@ -362,7 +362,7 @@ Using the Cisco ISR4321 onboard router for the firewall and the Pihole Ad Blocke
 Due to CGnat which my IP is dynamic I am not able to securely and remotely connect to my network using traditional methods such as Wireguard.
 A quick and simple alternative I found is through using tailscale to access my network through their relay servers to bypass the dynamic IP address.
 
-I installed tailscale to my main server and main PC 
+I installed tailscale to my main server and main PC using the HP Thin Client server as the main server to wake up the other computers using Wake-on-Lan through SSH
 
 
 ## What I Learned
