@@ -21,6 +21,7 @@ My Homelab network is built in order for me to learn and gain hands on experienc
 ![Network Diagram](https://github.com/Edualk12/HOMELAB-NETWORK/blob/main/HOMELAB%20V4.png)
 
 
+
 ##  Hardware
 
 ### Network Devices
@@ -43,6 +44,13 @@ My Homelab network is built in order for me to learn and gain hands on experienc
 | 10 | klaude | 192.168.1.0/24 | Klaude PC, HP Thin Client |
 | 20 | kamange | 192.168.2.0/24 | Kamange PC, Guest PC |
 | 30 | others | 192.168.3.0/24 | Engenius AP, WIFI |
+
+## Physical Homelab
+
+### Full Setup
+
+
+
 
 ## Configuration
 
