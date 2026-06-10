@@ -275,6 +275,12 @@ interface gi28
 !
 ```
 
+
+### IP Interface 
+
+![IP int Diagram](https://github.com/Edualk12/homelab-network/blob/main/ip%20int.png)
+
+
 ## How It Operates 
 
 ### Traffic Flow 
