@@ -391,6 +391,8 @@ I installed tailscale to my main server and main PC using the HP Thin Client ser
 
 ## Pi-hole DNS Server | Ad Blocker
 
+![Pihole Diagram](https://github.com/Edualk12/homelab-network/blob/main/pihole.png)
+
 ### Overview
 Pi-hole runs on the HP Thin Client (T530) on VLAN 10 at a 
 static IP of `192.168.1.69`, serving as the primary DNS 
