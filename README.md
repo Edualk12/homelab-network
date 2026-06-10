@@ -59,93 +59,13 @@ My Homelab network is built in order for me to learn and gain hands on experienc
 ### Cisco ISR4321
 For the router I used the router on a stick method for Inter VLAN routing and added extra security through adding a password when accessing priveleged exec mode.
 
-Full configuration: [configs/cisco-isr4321.cfg](configs/cisco-isr4321.cfg)
+Full configuration: [config/cisco-isr4321.cfg](config/cisco-isr4321.cfg)
 
 
 ### Engenius EWS7928P
 I configured the switch using a serial to USB converter and used PuTTy terminal to access the switch's terminal, I assigned the gi1 port as the trunk port or hybrid port in this case that is connected to the cisco router itself and assigned different ports to different VLANs as shown below in the config.
-```! EWS7928P - EnGenius 28-Port Gigabit Switch
-! Firmware: v1.05.45-c1.8.57
-!
-ipv6 state autoconfig
-username "admin" secret encrypted <REDACTED>
-username "klaude" secret encrypted <REDACTED>
 
-vlan 1
- name "default"
-vlan 10
- name "klaude"
-vlan 20
- name "Kamange"
-vlan 30
- name "others"
-
-spanning-tree mst configuration
- name "<REDACTED>"
-!
-snmp community private rw <REDACTED>
-snmp community public ro <REDACTED>
-snmp engineid <REDACTED>
-!
-no ip telnet
-ip ssh
-!
-interface gi1
- switchport mode hybrid
- switchport hybrid allowed vlan add 10,20,30 tagged
- ! Trunk port to Cisco ISR4321 - carries all VLANs tagged
-!
-interface gi3
- switchport mode hybrid
- switchport hybrid pvid 10
- switchport hybrid allowed vlan add 10 untagged
- ! Access port - VLAN 10
-!
-interface gi5
- switchport mode hybrid
- switchport hybrid pvid 30
- switchport hybrid allowed vlan add 30 untagged
- switchport hybrid allowed vlan remove 1
- ! Access port - VLAN 30, removed from default VLAN
-!
-interface gi7
- switchport mode hybrid
- switchport hybrid pvid 10
- switchport hybrid allowed vlan add 10 untagged
- switchport hybrid allowed vlan remove 1
- ! Access port - VLAN 10
-!
-interface gi19
- switchport mode hybrid
- switchport hybrid pvid 20
- switchport hybrid allowed vlan add 20 untagged
- switchport hybrid allowed vlan remove 1
- ! Access port - VLAN 20
-!
-interface gi21
- switchport mode hybrid
- switchport hybrid pvid 10
- switchport hybrid allowed vlan add 10 untagged
- switchport hybrid allowed vlan remove 1
- ! Access port - VLAN 10
-!
-interface gi25
- switchport mode hybrid
- speed auto duplex full
-!
-interface gi26
- switchport mode hybrid
- speed auto duplex full
-!
-interface gi27
- switchport mode hybrid
- speed auto duplex full
-!
-interface gi28
- switchport mode hybrid
- speed auto duplex full
-!
-```
+Full configuration: [config/engenius-ews7928.cfg](config/engenius-ews7928.cfg)
 
 
 ### IP Interface 
